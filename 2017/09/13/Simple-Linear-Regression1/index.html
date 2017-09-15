@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式, 主要包括简单线性回归模型解析/残差平方和/梯度下降算法, 不涉及具体实现及应用,这部分内容将会在该系列下篇文章中展开.部分展开链接引用维基百科内容,需科学上网,不展开亦不影响其他内容阅读.">
+<meta name="description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式，主要包括简单线性回归模型解析、残差平方和、梯度下降算法，不涉及具体实现及应用，这部分内容将会在该系列下篇文章中展开。部分展开链接引用维基百科内容，需科学上网,不展开亦不影响其他内容阅读。">
 <meta name="keywords" content="Simple Linear Regression,RSS,Gradient Descent Algorithm,殘差平方和,简单线性回归,梯度下降算法Simple-Linear-Regression1Simple-Linear-Regression1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regression:Simple Linear Regression-简单线性回归模型1">
 <meta property="og:url" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/index.html">
 <meta property="og:site_name" content="Kiky&#39;s Blog —— 素年锦时">
-<meta property="og:description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式, 主要包括简单线性回归模型解析/残差平方和/梯度下降算法, 不涉及具体实现及应用,这部分内容将会在该系列下篇文章中展开.部分展开链接引用维基百科内容,需科学上网,不展开亦不影响其他内容阅读.">
+<meta property="og:description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式，主要包括简单线性回归模型解析、残差平方和、梯度下降算法，不涉及具体实现及应用，这部分内容将会在该系列下篇文章中展开。部分展开链接引用维基百科内容，需科学上网,不展开亦不影响其他内容阅读。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/Regression-ML-block-diagram.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/Residual-sum-of-squares.png">
@@ -109,10 +109,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/convex-function-min-value.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/concave-function-max-value.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/contour-plot-of-RSS.png">
-<meta property="og:updated_time" content="2017-09-13T08:45:20.436Z">
+<meta property="og:updated_time" content="2017-09-15T07:03:23.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regression:Simple Linear Regression-简单线性回归模型1">
-<meta name="twitter:description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式, 主要包括简单线性回归模型解析/残差平方和/梯度下降算法, 不涉及具体实现及应用,这部分内容将会在该系列下篇文章中展开.部分展开链接引用维基百科内容,需科学上网,不展开亦不影响其他内容阅读.">
+<meta name="twitter:description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式，主要包括简单线性回归模型解析、残差平方和、梯度下降算法，不涉及具体实现及应用，这部分内容将会在该系列下篇文章中展开。部分展开链接引用维基百科内容，需科学上网,不展开亦不影响其他内容阅读。">
 <meta name="twitter:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/Regression-ML-block-diagram.jpg">
 
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,426
+                  2,418
                 </span>
               
 
@@ -452,56 +452,56 @@
       
 
       
-        <p>本文以预测房屋售价为例解析简单线性回归模型及相关概念公式, 主要包括简单线性回归模型解析/残差平方和/梯度下降算法, 不涉及具体实现及应用,这部分内容将会在该系列下篇文章中展开.<br>部分展开链接引用维基百科内容,需科学上网,不展开亦不影响其他内容阅读.</p>
+        <p>本文以预测房屋售价为例解析简单线性回归模型及相关概念公式，主要包括简单线性回归模型解析、残差平方和、梯度下降算法，不涉及具体实现及应用，这部分内容将会在该系列下篇文章中展开。<br>部分展开链接引用维基百科内容，需科学上网,不展开亦不影响其他内容阅读。</p>
 <a id="more"></a>
-<h3 id="什么是线性回归"><a href="#什么是线性回归" class="headerlink" title="什么是线性回归"></a>什么是线性回归</h3><p>在统计学中, 线性回归（Linear regression）是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析. 这种函数是一个或多个称为回归系数的模型参数的线性组合. 只有一个自变量的情况称为简单回归<a href="https://en.wikipedia.org/wiki/Simple_linear_regression" target="_blank" rel="external">(详见)</a>, 大于一个自变量情况的叫做多元回归.<br>注:本例中不采用最小二乘法调整模型的特征权重,采用梯度下降算法, 见下文.</p>
+<h3 id="什么是线性回归"><a href="#什么是线性回归" class="headerlink" title="什么是线性回归"></a>什么是线性回归</h3><p>在统计学中，线性回归（Linear regression）是利用称为线性回归方程的最小二乘函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。这种函数是一个或多个称为回归系数的模型参数的线性组合。只有一个自变量的情况称为简单回归<a href="https://en.wikipedia.org/wiki/Simple_linear_regression" target="_blank" rel="external">(详见)</a>，大于一个自变量情况的叫做多元回归。<br>注：本例中不采用最小二乘法调整模型的特征权重，采用梯度下降算法，见下文。</p>
 <h3 id="线性回归应用场景举例"><a href="#线性回归应用场景举例" class="headerlink" title="线性回归应用场景举例"></a>线性回归应用场景举例</h3><ol>
-<li>预测股票涨跌<br>x=股票涨跌历史数据/新闻事件/相关商品等<br>y=股票价格</li>
-<li>预测某人微博/推特发文会被多少人转发<br>x=粉丝数/粉丝的粉丝数/发文特征/主题标签热度等<br>y=发文转发数</li>
-<li>预测房屋售价<br>x=房屋大小/洗手间个数/距离市区公里数/所在城市的犯罪率等<br>y=房屋售价</li>
+<li>预测股票涨跌<br>x=股票涨跌历史数据、新闻事件、相关商品等<br>y=股票价格</li>
+<li>预测某人微博/推特发文会被多少人转发<br>x=粉丝数、粉丝的粉丝数、发文特征、主题标签热度等<br>y=发文转发数</li>
+<li>预测房屋售价<br>x=房屋大小、洗手间个数、距离市区公里数、所在城市的犯罪率等<br>y=房屋售价</li>
 </ol>
-<h3 id="简单线性回归模型"><a href="#简单线性回归模型" class="headerlink" title="简单线性回归模型"></a>简单线性回归模型</h3><h4 id="模型简析"><a href="#模型简析" class="headerlink" title="模型简析"></a>模型简析</h4><p>简单线性回归模型只有一个变量, 因此我们假设可以由房子大小x预测房屋售价y. 模型框图如下:<br><img src="/2017/09/13/Simple-Linear-Regression1/Regression-ML-block-diagram.jpg" alt="机器学习-简单线性回归模型框图" title="简单线性回归模型框图"></p>
+<h3 id="简单线性回归模型-1"><a href="#简单线性回归模型-1" class="headerlink" title="简单线性回归模型[1]"></a>简单线性回归模型<sup>[1]</sup></h3><h4 id="模型简析"><a href="#模型简析" class="headerlink" title="模型简析"></a>模型简析</h4><p>简单线性回归模型只有一个变量，因此我们假设可以由房子大小x预测房屋售价y。模型框图如下：<br><img src="/2017/09/13/Simple-Linear-Regression1/Regression-ML-block-diagram.jpg" alt="机器学习-简单线性回归模型框图" title="简单线性回归模型框图"></p>
 <ol>
-<li>训练数据集为包括房屋id/房屋大小/洗手间个数等属性的表格;</li>
-<li>从训练数据集中抽取特征,在本例中选择特征-房屋大小;</li>
-<li>选择机器学习模型(回归模型/分类模型/聚类模型等),本例中为简单线性回归模型,即\( ŷ = w_0 + w_1x \);</li>
-<li>给模型特征权重ŵ=\( ( w_0,w_1) \)赋值(此模型中,ŵ也可称为回归系数),根据模型公式\( ŷ = w_0 + w_1x \)由房屋大小x预测房屋售价ŷ;</li>
-<li>将预测房屋售价ŷ与房屋实际售价y进行差异对比,本例中采用RSS作为评价指标;</li>
-<li>选择机器学习算法调整模型的特征权重,使ŷ与y的差异减小,即RSS减小,本例中机器学习算法选择梯度下降算法;</li>
-<li>循环4-6直到RSS小于某个阈值,训练完成,得到某个确定的特征权重w=\( (w_0,w_1) \),给出房屋大小后即可预测房屋售价.</li>
+<li>训练数据集为包括房屋id、房屋大小、洗手间个数等属性的表格；</li>
+<li>从训练数据集中抽取特征，在本例中选择特征-房屋大小；</li>
+<li>选择机器学习模型（回归模型/分类模型/聚类模型等），本例中为简单线性回归模型，即\( \hat y = w_0 + w_1x \)；</li>
+<li>给模型特征权重\( \hat w = ( w_0,w_1) \)赋值（此模型中，ŵ也可称为回归系数），根据模型公式\( \hat y = w_0 + w_1x \)由房屋大小x预测房屋售价\( \hat y \)；</li>
+<li>将预测房屋售价\( \hat y \)与房屋实际售价y进行差异对比，本例中采用RSS作为评价指标；</li>
+<li>选择机器学习算法调整模型的特征权重，使\( \hat y \)与\( y \)的差异减小，即RSS减小，本例中机器学习算法选择梯度下降算法；</li>
+<li>循环4-6直到RSS小于某个阈值，训练完成，得到某个确定的特征权重w=\( (w_0,w_1) \)，给出房屋大小后即可预测房屋售价。</li>
 </ol>
-<h4 id="RSS-残差平方和"><a href="#RSS-残差平方和" class="headerlink" title="RSS - 残差平方和"></a>RSS - 残差平方和</h4><p>英文全称Residual sum of squares,中文名残差平方和<a href="https://en.wikipedia.org/wiki/Residual_sum_of_squares" target="_blank" rel="external">(详见)</a>.<br>计算公式: \( \begin{align} RSS = \sum \limits_{i=1}^n (y_i-f(x_i))^2 \end{align} \)<br>公式文字解析: 当房屋大小为\( x_i \)时, \( f(x_i) \)为预测房屋售价, \( y_i \)为房屋实际售价.<br>公式图示解析: 数据点(红色), 简单线性回归模型求得的解(蓝色), 误差(绿色), RSS = 所有绿色竖线长度平方的总和.</p>
-<p><center><img src="/2017/09/13/Simple-Linear-Regression1/Residual-sum-of-squares.png" alt="RSS - 残差平方和" title="残差平方和图示"><center></center></center></p>
-<p>在简单线性回归模型中, 预测房屋售价为\( f(x_i) = w_0 + w_1x_i \), \( \varepsilon_i = y_i-f(x_i) \)为实际售价与预测售价之间的误差, 即上图每条绿线长度. 因此简单线性回归模型可准确表示为:\( y_i = w_0 + w_1x_i + \varepsilon_i \). 此模型中,把\( \varepsilon_i \)当做随机数,并假设\( E[\varepsilon_i] = 0 \).</p>
-<h4 id="Gradient-Descent-Algorithm-梯度下降算法"><a href="#Gradient-Descent-Algorithm-梯度下降算法" class="headerlink" title="Gradient Descent Algorithm - 梯度下降算法"></a>Gradient Descent Algorithm - 梯度下降算法</h4><p>此时, 该模型中还有一个问题尚未解决-如何找到使得损失最小也就是RSS最小的\( ( w_0,w_1) \)? 本例中我们选择采用梯度下降算法,一种一阶最优化算法<a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="external">(详见)</a>.<br>每一对不同的\( ( w_0,w_1) \)表示一条不同的回归线, 不同的回归线也就有不尽相同的RSS, 因此我们把\( w_0, w_1 \)当做变量时,RSS可以表示为:<br>\( \begin{align} RSS(w_0,w_1) = \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \end{align} \)<br>根据该公式描点画图,以\( w_0,w_1,RSS \)为坐标轴,画出的图形类似下图,亦或更复杂:</p>
-<p><center><img src="/2017/09/13/Simple-Linear-Regression1/3D-plot-of-RSS.png" alt="RSS的3D图" title="RSS的3D图"><center></center></center></p>
-<p>当我们随机选取一对\( (w_0, w_1) \)作为初始值时, 梯度下降算法是怎么运行使得我们下一步选取的\( (w_0, w_1) \)对应RSS更小? 梯度下降算法是怎么一步步使得选取的\( (w_0, w_1) \)对应RSS逐渐逼近最小值\( \min \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \), 即图中的最低点. 此处从二维类推到三维进行解析.</p>
-<h5 id="凸-凹函数"><a href="#凸-凹函数" class="headerlink" title="凸/凹函数"></a>凸/凹函数</h5><p>凸函数(Convex function): 在指定区间内, 函数曲线上连接任意两点画出的线段在原函数曲线上方(下图左). 在数学中,凹函数(Concave function)是凸函数的相反(下图右).</p>
+<h4 id="RSS-残差平方和"><a href="#RSS-残差平方和" class="headerlink" title="RSS - 残差平方和"></a>RSS - 残差平方和</h4><p>英文全称Residual sum of squares，中文名残差平方和<a href="https://en.wikipedia.org/wiki/Residual_sum_of_squares" target="_blank" rel="external">(详见)</a>。<br>计算公式：\( \begin{align} RSS = \sum \limits_{i=1}^n (y_i-f(x_i))^2 \end{align} \)<br>公式文字解析：当房屋大小为\( x_i \)时，\( f(x_i) \)为预测房屋售价，\( y_i \)为房屋实际售价。<br>公式图示解析：数据点(红色)，简单线性回归模型求得的解(蓝色)，误差(绿色)，RSS = 所有绿色竖线长度平方的总和。</p>
+<p><center><img src="/2017/09/13/Simple-Linear-Regression1/Residual-sum-of-squares.png" alt="RSS - 残差平方和" title="残差平方和图示&lt;sup&gt;[2]&lt;/sup&gt;"><center></center></center></p>
+<p>在简单线性回归模型中，预测房屋售价为\( f(x_i) = w_0 + w_1x_i \)，\( \varepsilon_i = y_i-f(x_i) \)为实际售价与预测售价之间的误差，即上图每条绿线长度。因此简单线性回归模型可准确表示为：\( y_i = w_0 + w_1x_i + \varepsilon_i \)。此模型中，把\( \varepsilon_i \)当做随机数，并假设\( E[\varepsilon_i] = 0 \)。</p>
+<h4 id="Gradient-Descent-Algorithm-梯度下降算法"><a href="#Gradient-Descent-Algorithm-梯度下降算法" class="headerlink" title="Gradient Descent Algorithm - 梯度下降算法"></a>Gradient Descent Algorithm - 梯度下降算法</h4><p>此时，该模型中还有一个问题尚未解决：如何找到使得损失最小也就是RSS最小的\( ( w_0,w_1) \)？本例中我们选择采用梯度下降算法，一种一阶最优化算法<a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="external">(详见)</a>。<br>每一对不同的\( ( w_0,w_1) \)表示一条不同的回归线，不同的回归线也就有不尽相同的RSS，因此我们把\( w_0, w_1 \)当做变量时，RSS可以表示为：\( \begin{align} RSS(w_0,w_1) = \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \end{align} \)<br>根据该公式描点画图，以\( w_0,w_1,RSS \)为坐标轴，画出的图形类似下图，亦或更复杂：</p>
+<p><center><img src="/2017/09/13/Simple-Linear-Regression1/3D-plot-of-RSS.png" alt="RSS的3D图" title="RSS的3D图&lt;sup&gt;[1]&lt;/sup&gt;"><center></center></center></p>
+<p>当我们随机选取一对\( (w_0, w_1) \)作为初始值时，梯度下降算法是怎么运行使得我们下一步选取的\( (w_0, w_1) \)对应RSS更小？梯度下降算法是怎么一步步使得选取的\( (w_0, w_1) \)对应RSS逐渐逼近最小值\( \min \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \)，即图中的最低点。此处从二维类推到三维进行解析。</p>
+<h5 id="凸-凹函数"><a href="#凸-凹函数" class="headerlink" title="凸/凹函数"></a>凸/凹函数</h5><p>凸函数（Convex function）：在指定区间内，函数曲线上连接任意两点画出的线段在原函数曲线上方（下图左）。在数学中，凹函数（Concave function）是凸函数的相反（下图右）。</p>
 <p><center><img src="/2017/09/13/Simple-Linear-Regression1/convex-concave-functions.png" alt="凸/凹函数" title="凸/凹函数"><center></center></center></p>
 <blockquote>
-<p>注意: 中国大陆数学界某些机构关于函数凹凸性定义和国外的定义是相反的. Convex Function在某些中国大陆的数学书中指凹函数. Concave Function指凸函数. 但在中国大陆涉及经济学的很多书中, 凹凸性的提法和其他国家的提法是一致的, 也就是和数学教材是反的. 举个例子, 同济大学高等数学教材对函数的凹凸性定义与本条目相反, 本条目的凹凸性是指其上方图是凹集或凸集, 而同济大学高等数学教材则是指其下方图是凹集或凸集, 两者定义正好相反<a href="https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%BD%E6%95%B0" target="_blank" rel="external">(详见)</a>.</p>
+<p>注意：中国大陆数学界某些机构关于函数凹凸性定义和国外的定义是相反的。Convex Function在某些中国大陆的数学书中指凹函数。Concave Function指凸函数。但在中国大陆涉及经济学的很多书中，凹凸性的提法和其他国家的提法是一致的，也就是和数学教材是反的。举个例子，同济大学高等数学教材对函数的凹凸性定义与本条目相反，本条目的凹凸性是指其上方图是凹集或凸集，而同济大学高等数学教材则是指其下方图是凹集或凸集，两者定义正好相反<a href="https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%BD%E6%95%B0" target="_blank" rel="external">(详见)</a>。</p>
 </blockquote>
-<p>1.凸函数最小值<br>在第t次迭代确定w即w(t)后, 如何选定下一个w即w(t+1), 使得每一步选择的w逐步向中间靠拢?</p>
+<p>1.凸函数最小值<br>在第t次迭代确定w即w(t)后，如何选定下一个w即w(t+1)，使得每一步选择的w逐步向中间靠拢？</p>
 <p><center><img src="/2017/09/13/Simple-Linear-Regression1/convex-function-min-value.jpg" width="250px" alt="凹函数最大值"><center></center></center></p>
-<p>在凸函数g(w)中, 中间长虚线左侧导数小于零(\( \frac{dg(w)}{dw} &lt; 0 \)), 右侧导数大于零(\( \frac{dg(w)}{dw} &gt; 0 \)), 因此无论初始w(0)在左侧还是右侧, \( w(1) = w(0) - \frac{dg(w)}{dw} |_{w=0} \)都会使得w(1)向中间靠拢, 之后w(2)/w(3)/w(4)…的产生依次类推, 直到取到某一个w, 满足导数为零(\( \frac{dg(w)}{dw} = 0 \)), g(w)在此w处取到最小值\( \min g(x) \). 在实际操作中, 停止寻找下一个w的条件并不是导数为零, 而是导数绝对值小于某个事先设定的阈值\( \varepsilon \), 可以理解为导数与0之间的误差在我们可以接受的范围内.<br>在此基础上, 另添加一个变量\( \eta \)-步长, 来控制寻找下一个w时不要变化太快, 即控制上图中蓝色箭头长度不能过长. 因此寻找最小值对应w的过程可表示为:</p>
+<p>在凸函数g(w)中，中间长虚线左侧导数小于零(\( \frac{dg(w)}{dw} &lt; 0 \))，右侧导数大于零(\( \frac{dg(w)}{dw} &gt; 0 \))，因此无论初始w(0)在左侧还是右侧，\( w(1) = w(0) - \frac{dg(w)}{dw} |_{w=0} \)都会使得w(1)向中间靠拢，之后w(2)/w(3)/w(4)……的产生依次类推，直到取到某一个w，满足导数为零(\( \frac{dg(w)}{dw} = 0 \))，g(w)在此w处取到最小值\( \min g(x) \)。在实际操作中，停止寻找下一个w的条件并不是导数为零，而是导数绝对值小于某个事先设定的阈值\( \varepsilon \)，可以理解为导数与0之间的误差在我们可以接受的范围内。<br>在此基础上，另添加一个变量\( \eta \)-步长，来控制寻找下一个w时不要变化太快，即控制上图中蓝色箭头长度不能过长。因此寻找最小值对应w的过程可表示为：</p>
 <blockquote>
 <p>while not \( \frac{dg(w)}{dw} &lt; \varepsilon \):<br>&emsp;&emsp;\( w^{(t+1)} = w^{(t)} - \eta\frac{dg(w)}{dw} |_{w(t)} \)</p>
 </blockquote>
-<p>上式中的步长\( \eta \)可设置为固定长度, 譬如0.1; 亦可设置为可变值, 通常我们会选择递减的步长, 越靠近最小值步子迈的越小, 否则容易出现左右来回震荡的现象, 导致查找效率下降. \( \eta \)的设置可参考下面两个公式: \( \eta_t = \frac{\alpha}{t} \) or \( \eta_t = \frac{\alpha}{\sqrt{t}} \), 其中\( \alpha \)为定值.</p>
+<p>上式中的步长\( \eta \)可设置为固定长度，譬如0.1；亦可设置为可变值，通常我们会选择递减的步长，越靠近最小值步子迈的越小，否则容易出现左右来回震荡的现象，导致查找效率下降。\( \eta \)的设置可参考下面两个公式：\( \eta_t = \frac{\alpha}{t} \) or \( \eta_t = \frac{\alpha}{\sqrt{t}} \)，其中\( \alpha \)为定值。</p>
 <p>2.凹函数最大值</p>
 <p><center><img src="/2017/09/13/Simple-Linear-Regression1/concave-function-max-value.jpg" width="250px" alt="凹函数最大值"><center></center></center></p>
-<p>在凹函数中寻找最大值对应的w, 与上一节类似, 其寻找过程唯一不同的地方在于下式中等号右侧为加号: \( w^{(t+1)} = w^{(t)} + \eta\frac{dg(w)}{dw} |_{w(t)} \) .</p>
-<h5 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h5><p>1.梯度定义<br>假设\( g(w) = 5w_0 + 10w_0w_1 +2w_1^2 \), 分别对\( w_0, w_1 \)求偏导得: \( \frac{\partial g}{\partial w_0} = 5 + 10w_1 \), \( \frac{\partial g}{\partial w_1} = 10w_0 + 4w_1 \), 则梯度为:\( \nabla g(w) = \begin{bmatrix} 5 + 10w_1 \\ 10w_0 + 4w_1 \\ \end{bmatrix} \) . \( \begin{Vmatrix} \nabla g(w) \end{Vmatrix} = \sqrt{(5 + 10w_1)^2} + \sqrt{(10w_0 + 4w_1)^2} \), 在英文中的概念为the magnitude of the gradient, 中文为梯度的2-范数, 也是通常意义上的模, 梯度下降意为该值在寻找w过程中越来越小.</p>
-<p>2.计算RSS梯度<br>对\( RSS(w_0,w_1) = \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \)求偏导:<br>&emsp;\( \frac{\partial RSS}{\partial w_0} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \)<br>&emsp;\( \frac{\partial RSS}{\partial w_1} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \)<br>RSS梯度为:<br>&emsp;\( \nabla RSS(w_0, w_1) = \begin{bmatrix} \frac{\partial RSS}{\partial w_0} \\ \frac{\partial RSS}{\partial w_1} \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \\ -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)] \\ -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)]x_i \\ \end{bmatrix} \)</p>
-<p>3.梯度下降<br>由此, 寻找最低点对应的\( (w_0, w_1) \)过程, 即梯度下降算法可表示为:</p>
+<p>在凹函数中寻找最大值对应的w，与上一节类似，其寻找过程唯一不同的地方在于下式中等号右侧为加号：\( w^{(t+1)} = w^{(t)} + \eta\frac{dg(w)}{dw} |_{w(t)} \)。</p>
+<h5 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h5><p>1.梯度定义<br>假设\( g(w) = 5w_0 + 10w_0w_1 +2w_1^2 \)，分别对\( w_0, w_1 \)求偏导得：\( \frac{\partial g}{\partial w_0} = 5 + 10w_1 \)，\( \frac{\partial g}{\partial w_1} = 10w_0 + 4w_1 \)，则梯度为:\( \nabla g(w) = \begin{bmatrix} 5 + 10w_1 \\ 10w_0 + 4w_1 \\ \end{bmatrix} \)。\( \begin{Vmatrix} \nabla g(w) \end{Vmatrix} = \sqrt{(5 + 10w_1)^2} + \sqrt{(10w_0 + 4w_1)^2} \)，在英文中的概念为the magnitude of the gradient，中文为梯度的2-范数，也是通常意义上的模，梯度下降意为该值在寻找w过程中越来越小。</p>
+<p>2.计算RSS梯度<br>对\( RSS(w_0,w_1) = \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \)求偏导：<br>&emsp;\( \frac{\partial RSS}{\partial w_0} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \)<br>&emsp;\( \frac{\partial RSS}{\partial w_1} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \)<br>RSS梯度为：<br>&emsp;\( \nabla RSS(w_0, w_1) = \begin{bmatrix} \frac{\partial RSS}{\partial w_0} \\ \frac{\partial RSS}{\partial w_1} \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \\ -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)] \\ -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)]x_i \\ \end{bmatrix} \)</p>
+<p>3.梯度下降<br>由此，寻找最低点对应的\( (w_0, w_1) \)过程，即梯度下降算法可表示为：</p>
 <blockquote>
 <p>while not \( \begin{Vmatrix} \nabla g(w) \end{Vmatrix} &lt; \varepsilon \):<br>&emsp;&emsp;\( w^{(t+1)} = w^{(t)} - \eta\nabla g(w^{(t)}) \)<br>&emsp;&emsp;\( \begin{bmatrix} w_0^{(t+1)} \\ w_1^{(t+1)} \\ \end{bmatrix} = \begin{bmatrix} w_0^{(t)} \\ w_1^{(t)} \\ \end{bmatrix} + 2\eta\begin{bmatrix} \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)] \\ \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)]x_i \\ \end{bmatrix} \)  //此行是上一行的具象化表示</p>
 </blockquote>
-<p>以上算法实现下图中蓝色箭头前进方向的w取值. 用平行于\( w_0 0 w_1 \)面的平面对上文中的’RSS的3D图’进行切割, 可以得到如下RSS切面图:</p>
-<p><center><img src="/2017/09/13/Simple-Linear-Regression1/contour-plot-of-RSS.png" width="450px" alt="RSS的切面图"><center></center></center></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>至此, 简单线性回归模型已全部讲解完毕. 该模型中的初始\( (w_0, w_1)\)选择, 步长\( \eta \)选择, 误差收敛标准\( \varepsilon \)选择均会影响模型预测效果.<br><br></p>
+<p>以上算法实现下图中蓝色箭头前进方向的w取值。用平行于\( w_0 0 w_1 \)面的平面对上文中的‘RSS的3D图’进行切割,，可以得到如下RSS切面图：</p>
+<p><center><img src="/2017/09/13/Simple-Linear-Regression1/contour-plot-of-RSS.png" width="450px" alt="RSS的切面图" title="RSS切面图<sup>[1]</sup>"><center></center></center></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>至此，简单线性回归模型已全部讲解完毕。该模型中的初始\( (w_0, w_1)\)选择，步长\( \eta \)选择，误差收敛标准\( \varepsilon \)选择均会影响模型预测效果。<br><br></p>
 <hr>
-<p>本文参考:<br>部分截图来源于网络.<br>整体思路来源于Coursera课程:<br>1.<a href="https://www.coursera.org/learn/ml-foundations/home" target="_blank" rel="external">Machine Learning Foundations: A Case Study Approach - University of Washington</a><br>2.<a href="https://www.coursera.org/learn/ml-regression/home" target="_blank" rel="external">Machine Learning: Regression - University of Washington</a></p>
+<p>本文参考：<br>[1] <a href="https://www.coursera.org/learn/ml-regression/home" target="_blank" rel="external">Machine Learning: Regression - University of Washington</a><br>[2] <a href="https://en.wikipedia.org/wiki/Linear_least_squares_(mathematics)" target="_blank" rel="external">https://en.wikipedia.org/wiki/Linear_least<em>squares</em>(mathematics)</a></p>
 <hr>
 <p>转载请注明出处, 谢谢.<br>本文链接: <a href="http://nlpor.top/2017/09/13/Simple-Linear-Regression1/" target="_blank" rel="external">http://nlpor.top/2017/09/13/Simple-Linear-Regression1/</a></p>
 
@@ -655,7 +655,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -727,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是线性回归"><span class="nav-number">1.</span> <span class="nav-text">什么是线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归应用场景举例"><span class="nav-number">2.</span> <span class="nav-text">线性回归应用场景举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单线性回归模型"><span class="nav-number">3.</span> <span class="nav-text">简单线性回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型简析"><span class="nav-number">3.1.</span> <span class="nav-text">模型简析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSS-残差平方和"><span class="nav-number">3.2.</span> <span class="nav-text">RSS - 残差平方和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent-Algorithm-梯度下降算法"><span class="nav-number">3.3.</span> <span class="nav-text">Gradient Descent Algorithm - 梯度下降算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#凸-凹函数"><span class="nav-number">3.3.1.</span> <span class="nav-text">凸/凹函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#梯度"><span class="nav-number">3.3.2.</span> <span class="nav-text">梯度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是线性回归"><span class="nav-number">1.</span> <span class="nav-text">什么是线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归应用场景举例"><span class="nav-number">2.</span> <span class="nav-text">线性回归应用场景举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单线性回归模型-1"><span class="nav-number">3.</span> <span class="nav-text">简单线性回归模型[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型简析"><span class="nav-number">3.1.</span> <span class="nav-text">模型简析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSS-残差平方和"><span class="nav-number">3.2.</span> <span class="nav-text">RSS - 残差平方和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent-Algorithm-梯度下降算法"><span class="nav-number">3.3.</span> <span class="nav-text">Gradient Descent Algorithm - 梯度下降算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#凸-凹函数"><span class="nav-number">3.3.1.</span> <span class="nav-text">凸/凹函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#梯度"><span class="nav-number">3.3.2.</span> <span class="nav-text">梯度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
