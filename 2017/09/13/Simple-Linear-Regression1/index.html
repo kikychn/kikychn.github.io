@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/convex-function-min-value.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/concave-function-max-value.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/09/13/Simple-Linear-Regression1/contour-plot-of-RSS.png">
-<meta property="og:updated_time" content="2017-09-15T07:39:15.581Z">
+<meta property="og:updated_time" content="2017-09-16T01:24:52.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regression:Simple Linear Regression-简单线性回归模型1">
 <meta name="twitter:description" content="本文以预测房屋售价为例解析简单线性回归模型及相关概念公式，主要包括简单线性回归模型解析、残差平方和、梯度下降算法，不涉及具体实现及应用，这部分内容将会在该系列下篇文章中展开。部分展开链接引用维基百科内容，需科学上网,不展开亦不影响其他内容阅读。">
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,436
+                  2,435
                 </span>
               
 
@@ -491,7 +491,7 @@
 <p>2.凹函数最大值</p>
 <p><center><img src="/2017/09/13/Simple-Linear-Regression1/concave-function-max-value.jpg" width="250px" alt="凹函数最大值"><center></center></center></p>
 <p>在凹函数中寻找最大值对应的w，与上一节类似，其寻找过程唯一不同的地方在于下式中等号右侧为加号：\( w^{(t+1)} = w^{(t)} + \eta\frac{dg(w)}{dw} |_{w(t)} \)。</p>
-<h5 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h5><p>1.梯度定义<br>假设\( g(w) = 5w_0 + 10w_0w_1 +2w_1^2 \)，分别对\( w_0, w_1 \)求偏导得：\( \frac{\partial g}{\partial w_0} = 5 + 10w_1 \)，\( \frac{\partial g}{\partial w_1} = 10w_0 + 4w_1 \)，则梯度为:\( \nabla g(w) = \begin{bmatrix} 5 + 10w_1 \\ 10w_0 + 4w_1 \\ \end{bmatrix} \)。\( \begin{Vmatrix} \nabla g(w) \end{Vmatrix} = \sqrt{(5 + 10w_1)^2} + \sqrt{(10w_0 + 4w_1)^2} \)，在英文中的概念为the magnitude of the gradient，中文为梯度的2-范数，也是通常意义上的模，梯度下降意为该值在寻找w过程中越来越小。</p>
+<h5 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h5><p>1.梯度定义<br>假设\( g(w) = 5w_0 + 10w_0w_1 +2w_1^2 \)，分别对\( w_0, w_1 \)求偏导得：\( \frac{\partial g}{\partial w_0} = 5 + 10w_1 \)，\( \frac{\partial g}{\partial w_1} = 10w_0 + 4w_1 \)，则梯度为:\( \nabla g(w) = \begin{bmatrix} 5 + 10w_1 \\ 10w_0 + 4w_1 \\ \end{bmatrix} \)。\( \begin{Vmatrix} \nabla g(w) \end{Vmatrix} = \sqrt{(5 + 10w_1)^2 + (10w_0 + 4w_1)^2} \)，在英文中的概念为the magnitude of the gradient，中文为梯度的2-范数，也是通常意义上的模，梯度下降意为该值在寻找w过程中越来越小。</p>
 <p>2.计算RSS梯度<br>对\( RSS(w_0,w_1) = \sum \limits_{i=1}^n (y_i-[w_0 + w_1x_i])^2 \)求偏导：<br>&emsp;\( \frac{\partial RSS}{\partial w_0} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \)<br>&emsp;\( \frac{\partial RSS}{\partial w_1} = -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \)<br>RSS梯度为：<br>&emsp;\( \nabla RSS(w_0, w_1) = \begin{bmatrix} \frac{\partial RSS}{\partial w_0} \\ \frac{\partial RSS}{\partial w_1} \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)] \\ -2 \sum \limits_{i=1}^n [y_i - (w_0 + w_1x_i)]x_i \\ \end{bmatrix} = \begin{bmatrix} -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)] \\ -2 \sum \limits_{i=1}^n [y_i - \hat y_i(w_0, w_1)]x_i \\ \end{bmatrix} \)</p>
 <p>3.梯度下降<br>由此，寻找最低点对应的\( (w_0, w_1) \)过程，即梯度下降算法可表示为：</p>
 <blockquote>
